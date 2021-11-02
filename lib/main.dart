@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Modu Test with Staggered Grid View',
-      home: NewTransactionScreen(),
+      home: MainScreen(),
     );
   }
 

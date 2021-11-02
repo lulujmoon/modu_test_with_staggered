@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:modu_test_with_staggered/data/transaction_grid_content.dart';
 import 'package:modu_test_with_staggered/data/transaction_grid_data.dart';
 import 'package:modu_test_with_staggered/model/transaction_model.dart';
 import 'package:modu_test_with_staggered/screens/new_transaction/components/transaction_section.dart';
 import 'package:modu_test_with_staggered/screens/new_transaction/components/transaction_section_center.dart';
 
-Widget transactionTable() {
-  double totalWidth = 1350;
+Widget transactionTable(width) {
+  double totalWidth = width*0.75;
+  if(totalWidth>1500) totalWidth = 1500;
   int axisCount = 25;
 
   return SingleChildScrollView(
@@ -22,7 +24,7 @@ Widget transactionTable() {
           Row(
             children: [
               SizedBox(
-                height: totalWidth/axisCount*3.885,
+                height: totalWidth/axisCount*3.889,
                 width: totalWidth/axisCount*14,
                 child: TransactionSection(
                   axisCount: 14,
