@@ -6,6 +6,9 @@ import 'package:modu_test_with_staggered/screens/new_transaction/components/tran
 import 'package:modu_test_with_staggered/screens/new_transaction/components/transaction_section_center.dart';
 
 Widget transactionTable() {
+  double totalWidth = 1350;
+  int axisCount = 25;
+
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Container(
@@ -19,8 +22,8 @@ Widget transactionTable() {
           Row(
             children: [
               SizedBox(
-                height: 210,
-                width: 756,
+                height: totalWidth/axisCount*3.885,
+                width: totalWidth/axisCount*14,
                 child: TransactionSection(
                   axisCount: 14,
                   itemCount: topLeftTile.length,
@@ -29,8 +32,8 @@ Widget transactionTable() {
                 ),
               ),
               SizedBox(
-                height: 210,
-                width: 594,
+                height: totalWidth/axisCount*3.885,
+                width: totalWidth/axisCount*11,
                 child: TransactionSection(
                   axisCount: 11,
                   itemCount: topRightTile.length,
@@ -43,8 +46,8 @@ Widget transactionTable() {
           Column(
             children: [
               SizedBox(
-                height: 27,
-                width: 1350,
+                height: totalWidth/(axisCount*2),
+                width: totalWidth,
                 child: TransactionSection(
                   axisCount: 25,
                   itemCount: centerTile.length,
@@ -54,8 +57,8 @@ Widget transactionTable() {
               ),
               for(int i=0;i<transactionModel.details.length;i++)
               SizedBox(
-                height: 27,
-                width: 1350,
+                height: totalWidth/(axisCount*2),
+                width: totalWidth,
                 child: TransactionSectionCenter(
                   axisCount: 25,
                   itemCount: centerTile.length,
@@ -64,8 +67,8 @@ Widget transactionTable() {
               ),
               for(int i=0;i<10-transactionModel.details.length;i++)
               SizedBox(
-                height: 27,
-                width: 1350,
+                height: totalWidth/(axisCount*2),
+                width: totalWidth,
                 child: StaggeredGridView.countBuilder(
                   crossAxisCount: 25,
                   itemCount: centerTile.length,
@@ -92,8 +95,8 @@ Widget transactionTable() {
             ],
           ),
           SizedBox(
-            height: 109.76,
-            width: 1350,
+            height: totalWidth/axisCount*2,
+            width: totalWidth,
             child: TransactionSection(
               axisCount: 25,
               itemCount: bottomTile.length,
