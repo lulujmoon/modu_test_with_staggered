@@ -3,10 +3,10 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:modu_test_with_staggered/model/summary_model.dart';
 
 class SummaryTableSmall extends StatelessWidget {
-  final VendorInfoModel? vendorInfoModel;
-  final BuyerInfoModel? buyerInfoModel;
+  final SummaryModel model;
+  final int count;
 
-  const SummaryTableSmall({Key? key, this.vendorInfoModel, this.buyerInfoModel})
+  const SummaryTableSmall({Key? key, required this.model, required this.count})
       : super(key: key);
 
   @override
@@ -18,24 +18,24 @@ class SummaryTableSmall extends StatelessWidget {
         String innerText = '';
         switch (index) {
           case 0:
-            vendorInfoModel != null
-                ? innerText = vendorInfoModel!.name
-                : innerText = buyerInfoModel!.name;
+            model.isBuyer
+                ? innerText = model.buyerList![count].name
+                : innerText = model.vendorList![count].name;
             break;
           case 1:
-            vendorInfoModel != null
-                ? innerText = '이번달 매입액: ${vendorInfoModel!.thisPurchase}원'
-                : innerText = '이번달 매출액: ${buyerInfoModel!.thisSales}원';
+            model.isBuyer
+                ? innerText = '${model.buyerList![count].thisSales}원'
+                : innerText = '${model.vendorList![count].thisPurchase}원';
             break;
           case 2:
-            vendorInfoModel != null
-                ? innerText = '지난달 매입액: ${vendorInfoModel!.lastPurchase}원'
-                : innerText = '지난달 매출액: ${buyerInfoModel!.lastSales}원';
+            model.isBuyer
+                ? innerText = '지난달 매입액: ${model.buyerList![count].lastSales}원'
+                : innerText = '지난달 매출액: ${model.vendorList![count].lastPurchase}원';
             break;
           case 3:
-            vendorInfoModel != null
-                ? innerText = '미지급금: ${vendorInfoModel!.payable}원'
-                : innerText = '미수금: ${buyerInfoModel!.unpaid}원';
+            model.isBuyer
+                ? innerText = '미지급금: ${model.buyerList![count].unpaid}원'
+                : innerText = '미수금: ${model.vendorList![count].payable}원';
             break;
         }
 
@@ -43,7 +43,7 @@ class SummaryTableSmall extends StatelessWidget {
           return Container(
             child: Text(
               innerText,
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
             decoration: BoxDecoration(border: Border.all(width: 0.5)),
             alignment: Alignment.center,
@@ -53,14 +53,14 @@ class SummaryTableSmall extends StatelessWidget {
         return Container(
           child: Text(
             innerText,
-            style: TextStyle(fontSize: 12.0),
+            style: const TextStyle(fontSize: 12.0),
           ),
           decoration: BoxDecoration(
               border: index == 1
-                  ? Border(
+                  ? const Border(
                       bottom: BorderSide(width: 0.5),
                       top: BorderSide(width: 0.5))
-                  : Border(bottom: BorderSide(width: 0.5))),
+                  : const Border(bottom: BorderSide(width: 0.5))),
           alignment: Alignment.center,
         );
       },
