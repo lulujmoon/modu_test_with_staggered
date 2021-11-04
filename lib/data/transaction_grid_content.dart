@@ -7,7 +7,7 @@ List<Text> topLeftInside = [
   Text(transactionModel.page),
   const Text('거래명세서', style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.w600)),
   const Text('발행일자'),
-  Text('${transactionModel.date}'),
+  Text('${transactionModel.date.year}.${transactionModel.date.month}.${transactionModel.date.day}'),
   const Text('거래처명'),
   Text(transactionModel.counterpart),
   const Text('합계금액'),

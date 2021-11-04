@@ -32,7 +32,7 @@ class NewTransactionScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    transactionTable(MediaQuery.of(context).size.width),
+                    transactionTable(width: MediaQuery.of(context).size.width),
                     const SizedBox(height: 20),
                     TextButton(
                       child: const Text('전송'),

@@ -18,7 +18,6 @@ class TransactionSection extends StatelessWidget {
       itemCount: itemCount,
       mainAxisSpacing: 0,
       crossAxisSpacing: 0,
-      shrinkWrap: true,
       itemBuilder: (context, index) {
         return Container(
           alignment: Alignment.center,

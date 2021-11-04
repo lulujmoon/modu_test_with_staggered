@@ -6,9 +6,13 @@ import 'package:modu_test_with_staggered/model/transaction_model.dart';
 import 'package:modu_test_with_staggered/screens/new_transaction/components/transaction_section.dart';
 import 'package:modu_test_with_staggered/screens/new_transaction/components/transaction_section_center.dart';
 
-Widget transactionTable(width) {
+Widget transactionTable({required width}) {
   double totalWidth = width*0.75;
-  if(totalWidth>1500) totalWidth = 1500;
+  if(totalWidth>1500){
+    totalWidth = 1500;
+  }else if(totalWidth < 1200){
+    totalWidth = 1200;
+  }
   int axisCount = 25;
 
   return SingleChildScrollView(
