@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:modu_test_with_staggered/data/transaction_grid_data.dart';
-
 
 class TransactionSection extends StatelessWidget {
   final int axisCount;

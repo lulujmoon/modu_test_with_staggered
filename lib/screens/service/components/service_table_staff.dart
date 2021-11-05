@@ -22,111 +22,114 @@ class _ServiceTableStaffState extends State<ServiceTableStaff> {
 
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(),
-      defaultColumnWidth: const FixedColumnWidth(158),
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      children: [
-        TableRow(
-            decoration: BoxDecoration(color: Colors.grey[200]),
-            children: _titleList.map((text) {
-              if (text == _titleList[0]) {
-                return Container(
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                  ),
-                  height: 40,
-                  alignment: Alignment.center,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Table(
+        border: TableBorder.all(),
+        defaultColumnWidth: const FixedColumnWidth(157.5),
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: [
+          TableRow(
+              decoration: BoxDecoration(color: Colors.grey[200]),
+              children: _titleList.map((text) {
+                if (text == _titleList[0]) {
+                  return Container(
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.center,
+                    ),
+                    height: 40,
+                    alignment: Alignment.center,
+                  );
+                }
+                return Text(
+                  text,
+                  textAlign: TextAlign.center,
                 );
-              }
-              return Text(
-                text,
-                textAlign: TextAlign.center,
-              );
-            }).toList()),
-        for (int i = 0; i < serviceModel.staffList.length; i++)
-          TableRow(children: [
-            Container(
-              child: Text(
-                serviceModel.staffList[i].title,
-                textAlign: TextAlign.center,
-              ),
-              height: 40,
-              alignment: Alignment.center,
-            ),
-            Text(
-              serviceModel.staffList[i].name,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              serviceModel.staffList[i].telePhone,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              serviceModel.staffList[i].cellPhone,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              serviceModel.staffList[i].email,
-              textAlign: TextAlign.center,
-            ),
-            Row(
-              children: [
-                //실제 명세서 금액표시 값 변경 시 다르게 동작해야 함
-                Checkbox(
-                    value: serviceModel.staffList[i].isStatement
-                        ? true
-                        : false,
-                    onChanged: (changed) {
-                      setState(() {
-                        serviceModel.staffList[i].isStatement =
-                        changed!;
-                      });
-                    }),
-                const Text(
-                  '표시',
+              }).toList()),
+          for (int i = 0; i < serviceModel.staffList.length; i++)
+            TableRow(children: [
+              Container(
+                child: Text(
+                  serviceModel.staffList[i].title,
                   textAlign: TextAlign.center,
                 ),
-                Checkbox(
-                    value: serviceModel.staffList[i].isStatement
-                        ? false
-                        : true,
-                    onChanged: (changed) {
+                height: 40,
+                alignment: Alignment.center,
+              ),
+              Text(
+                serviceModel.staffList[i].name,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                serviceModel.staffList[i].telePhone,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                serviceModel.staffList[i].cellPhone,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                serviceModel.staffList[i].email,
+                textAlign: TextAlign.center,
+              ),
+              Row(
+                children: [
+                  //실제 명세서 금액표시 값 변경 시 다르게 동작해야 함
+                  Checkbox(
+                      value: serviceModel.staffList[i].isStatement
+                          ? true
+                          : false,
+                      onChanged: (changed) {
+                        setState(() {
+                          serviceModel.staffList[i].isStatement =
+                          changed!;
+                        });
+                      }),
+                  const Text(
+                    '표시',
+                    textAlign: TextAlign.center,
+                  ),
+                  Checkbox(
+                      value: serviceModel.staffList[i].isStatement
+                          ? false
+                          : true,
+                      onChanged: (changed) {
+                        setState(() {
+                          serviceModel.staffList[i].isStatement =
+                          !changed!;
+                        });
+                      }),
+                  const Text('미표시', textAlign: TextAlign.center),
+                ],
+              ),
+              //실제 담당업무 값 변경 시 다르게 동작해야 함
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: DropdownButton(
+                    isExpanded: true,
+                    value: _selectedRoleList[i],
+                    items: _roleList
+                        .map((value) =>
+                        DropdownMenuItem(
+                          child: Text(value),
+                          value: value,
+                        ))
+                        .toList(),
+                    onChanged: (String? selected) {
                       setState(() {
-                        serviceModel.staffList[i].isStatement =
-                        !changed!;
+                        _selectedRoleList[i] = selected;
                       });
                     }),
-                const Text('미표시', textAlign: TextAlign.center),
-              ],
-            ),
-            //실제 담당업무 값 변경 시 다르게 동작해야 함
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: DropdownButton(
-                  isExpanded: true,
-                  value: _selectedRoleList[i],
-                  items: _roleList
-                      .map((value) =>
-                      DropdownMenuItem(
-                        child: Text(value),
-                        value: value,
-                      ))
-                      .toList(),
-                  onChanged: (String? selected) {
-                    setState(() {
-                      _selectedRoleList[i] = selected;
-                    });
-                  }),
-            ),
-            // Text(serviceModel.staffList[i].role, textAlign: TextAlign.center,),
-            Text(
-              serviceModel.staffList[i].note,
-              textAlign: TextAlign.center,
-            ),
-          ])
-      ],
+              ),
+              // Text(serviceModel.staffList[i].role, textAlign: TextAlign.center,),
+              Text(
+                serviceModel.staffList[i].note,
+                textAlign: TextAlign.center,
+              ),
+            ])
+        ],
+      ),
     );
   }
 }

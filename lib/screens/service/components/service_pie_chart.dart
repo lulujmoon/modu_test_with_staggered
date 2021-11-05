@@ -16,21 +16,21 @@ class ServicePieChart extends StatelessWidget {
               sections: [
                 PieChartSectionData(
                     title: '33.3%',
-                    titleStyle: TextStyle(color: Colors.white),
+                    titleStyle: const TextStyle(color: Colors.white),
                     color: Colors.blue[900],
                     value: 33.3,
                     radius: 170
                 ),
                 PieChartSectionData(
                   title: '50%',
-                  titleStyle: TextStyle(color: Colors.white),
+                  titleStyle: const TextStyle(color: Colors.white),
                   color: Colors.blue[700],
                   value: 50,
                   radius: 170,
                 ),
                 PieChartSectionData(
                   title: '16.7%',
-                  titleStyle: TextStyle(color: Colors.white),
+                  titleStyle: const TextStyle(color: Colors.white),
                   color: Colors.blue[200],
                   value: 16.7,
                   radius: 170,

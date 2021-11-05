@@ -23,8 +23,8 @@ class SummaryTable extends StatelessWidget {
             break;
           case 1:
             model.isBuyer
-                ? innerText = '${model.buyerList![startNum].thisSales}원'
-                : innerText = '${model.vendorList![startNum].thisPurchase}원';
+                ? innerText = '이번달 매입액: ${model.buyerList![startNum].thisSales}원'
+                : innerText = '이번달 매출액: ${model.vendorList![startNum].thisPurchase}원';
             break;
           case 2:
             model.isBuyer
@@ -33,8 +33,8 @@ class SummaryTable extends StatelessWidget {
             break;
           case 3:
             model.isBuyer
-                ? innerText = '미지급금: ${model.buyerList![startNum].unpaid}원'
-                : innerText = '미수금: ${model.vendorList![startNum].payable}원';
+                ? innerText = '미수금: ${model.buyerList![startNum].unpaid}원'
+                : innerText = '미지급금: ${model.vendorList![startNum].payable}원';
             break;
           case 4:
             return Column(
