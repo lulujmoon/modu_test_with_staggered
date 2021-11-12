@@ -17,24 +17,16 @@ class SummaryTable extends StatelessWidget {
         String innerText = '';
         switch (index) {
           case 0:
-            model.isBuyer
-                ? innerText = model.buyerList![startNum].name
-                : innerText = model.vendorList![startNum].name;
+            innerText = model.buyerList![startNum].name;
             break;
           case 1:
-            model.isBuyer
-                ? innerText = '이번달 매입액: ${model.buyerList![startNum].thisSales}원'
-                : innerText = '이번달 매출액: ${model.vendorList![startNum].thisPurchase}원';
+            innerText = '이번달 매입액: ${model.buyerList![startNum].thisSales}원';
             break;
           case 2:
-            model.isBuyer
-                ? innerText = '지난달 매입액: ${model.buyerList![startNum].lastSales}원'
-                : innerText = '지난달 매출액: ${model.vendorList![startNum].lastPurchase}원';
+            innerText = '지난달 매입액: ${model.buyerList![startNum].lastSales}원';
             break;
           case 3:
-            model.isBuyer
-                ? innerText = '미수금: ${model.buyerList![startNum].unpaid}원'
-                : innerText = '미지급금: ${model.vendorList![startNum].payable}원';
+            innerText = '미수금: ${model.buyerList![startNum].unpaid}원';
             break;
           case 4:
             return Column(
@@ -52,12 +44,8 @@ class SummaryTable extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          if (model.isBuyer)
-                            for (int i = 0; i < model.buyerList![startNum].mainGoods.length; i++)
-                              GestureDetector(child: Text(model.buyerList![startNum].mainGoods[i]),)
-                          else if (!model.isBuyer)
-                            for (int i = 0; i < model.vendorList![startNum].mainGoods.length; i++)
-                              Text(model.vendorList![startNum].mainGoods[i])
+                            for (int i = 0;i < model.buyerList![startNum].mainGoods.length;i++)
+                              GestureDetector(child: Text(model.buyerList![startNum].mainGoods[i]))
                         ],
                       ),
                     ),

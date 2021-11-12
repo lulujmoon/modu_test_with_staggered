@@ -23,19 +23,25 @@ class Header extends StatelessWidget {
           InkWell(
             child: const Text('메인페이지', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),),
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainScreen()));
+              Navigator.pushNamed(context, '/main');
             },
           ),
           InkWell(
             child: const Text('거래명세서 작성', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),),
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewTransactionScreen()));
+              Navigator.pushNamed(context, '/new_transaction');
             },
           ),
           InkWell(
             child: const Text('서비스 관리', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),),
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ServiceScreen()));
+              Navigator.pushNamed(context, '/service');
+            },
+          ),
+          InkWell(
+            child: const Text('회원가입', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),),
+            onTap: (){
+              Navigator.pushNamed(context, '/join');
             },
           ),
         ],

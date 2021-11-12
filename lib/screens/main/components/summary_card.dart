@@ -13,6 +13,33 @@ class SummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _secondNum;
+    int _thirdNum;
+
+    if(model.isBuyer){
+      if(startNum == model.buyerList!.length-1){
+        _secondNum = 0;
+        _thirdNum = 1;
+      }else if(startNum == model.buyerList!.length-2){
+        _secondNum = startNum + 1;
+        _thirdNum = 0;
+      }else{
+        _secondNum = startNum+1;
+        _thirdNum = startNum+2;
+      }
+    }else{
+      if(startNum == model.vendorList!.length-1){
+        _secondNum = 0;
+        _thirdNum = 1;
+      }else if(startNum == model.vendorList!.length-2){
+        _secondNum = startNum + 1;
+        _thirdNum = 0;
+      }else{
+        _secondNum = startNum+1;
+        _thirdNum = startNum+2;
+      }
+    }
+
     return Column(
       children: [
         Container(
@@ -40,10 +67,7 @@ class SummaryCard extends StatelessWidget {
             SizedBox(
               width: 415,
               height: 325,
-              child:
-              model.isBuyer
-              ? SummaryTable(model: model, startNum: startNum)
-              :SummaryTable(model: model, startNum: startNum)
+              child: SummaryTable(model: model, startNum: startNum)
             ),
             const SizedBox(
               height: 15,
@@ -51,7 +75,7 @@ class SummaryCard extends StatelessWidget {
             SizedBox(
               width: 415,
               height: 90,
-              child: SummaryTableSmall(model: model, count: startNum+1,),
+              child: SummaryTableSmall(model: model, count: _secondNum,),
             ),
             const SizedBox(
               height: 10,
@@ -59,7 +83,7 @@ class SummaryCard extends StatelessWidget {
             SizedBox(
               width: 415,
               height: 90,
-              child: SummaryTableSmall(model: model, count: startNum+2,),
+              child: SummaryTableSmall(model: model, count: _thirdNum,),
             )
           ],
         ),
