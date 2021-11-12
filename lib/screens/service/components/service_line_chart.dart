@@ -1,84 +1,56 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ServiceLineChart extends StatelessWidget {
   const ServiceLineChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200]
+    final List<SalesData> chartData = [
+      SalesData(1, 26.5),
+      SalesData(2, 26.5),
+      SalesData(3, 25.4),
+      SalesData(4, 23.3),
+      SalesData(5, 20.6),
+      SalesData(6, 18.0),
+      SalesData(7, 17.4),
+      SalesData(8, 18.9),
+      SalesData(9, 21.2),
+      SalesData(10, 22.8),
+      SalesData(11, 23.6),
+      SalesData(12, 25.5)
+    ];
+
+    return SfCartesianChart(
+      series: <ChartSeries>[
+        LineSeries<SalesData, int>(
+          dataSource: chartData,
+          xValueMapper: (SalesData sales, _) => sales.month,
+          yValueMapper: (SalesData sales, _) => sales.sales,
+          dataLabelSettings: const DataLabelSettings(
+            isVisible: true,
+            labelAlignment: ChartDataLabelAlignment.top,
           ),
-          width: 600,
-          height: 400,
-        ),
-        Positioned(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black
-            ),
-            width: 600,
-            height: 1,
-          ),
-          bottom: 75,
-        ),
-        Positioned(
-          left: 25,
-          child: SizedBox(
-            width: 550,
-            height: 350,
-            child: LineChart(LineChartData(
-                borderData: FlBorderData(show: false),
-                maxX: 12,
-                maxY: 50,
-                minX: 1,
-                minY: 0,
-                titlesData: FlTitlesData(
-                    leftTitles: SideTitles(showTitles: false),
-                    rightTitles: SideTitles(showTitles: false),
-                    topTitles: SideTitles(showTitles: false),
-                    bottomTitles: SideTitles(
-                        getTitles: (value) {
-                          List<String> months = [
-                            '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'
-                          ];
-                          return months[value.toInt()-1];
-                        },
-                        showTitles: true)),
-                gridData: FlGridData(show: false),
-                lineBarsData: [
-                  LineChartBarData(
-                    colors: [Colors.teal],
-                    barWidth: 1,
-                    dotData: FlDotData(show: false),
-                    belowBarData: BarAreaData(),
-                    spots: [
-                      const FlSpot(1, 26.5),
-                      const FlSpot(2, 26.5),
-                      const FlSpot(3, 25.4),
-                      const FlSpot(4, 23.3),
-                      const FlSpot(5, 20.6),
-                      const FlSpot(6, 18.0),
-                      const FlSpot(7, 17.4),
-                      const FlSpot(8, 18.9),
-                      const FlSpot(9, 21.2),
-                      const FlSpot(10,22.8 ),
-                      const FlSpot(11, 23.6),
-                      const FlSpot(12, 25.5),
-                    ],
-                  ),
-                ],
-                lineTouchData: LineTouchData(
-                    touchTooltipData: LineTouchTooltipData(
-                        tooltipBgColor: Colors.white70,
-                    ),
-                ))),
-          ),
-        ),
+          color: Colors.teal,
+          width: 1,
+        )
       ],
+      primaryXAxis: NumericAxis(
+        labelFormat: '{value}월',
+        majorGridLines: const MajorGridLines(width: 0.0),
+        maximumLabels: 6,
+        axisLine: const AxisLine(color: Colors.black87)
+      ),
+      primaryYAxis: NumericAxis(isVisible: false),
+      backgroundColor: Colors.grey[200],
+      plotAreaBorderWidth: 0,
     );
   }
+}
+
+class SalesData {
+  final int month;
+  final double sales;
+
+  SalesData(this.month, this.sales);
 }
