@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:modu_test_with_staggered/model/transaction_detail_model.dart';
@@ -9,7 +10,7 @@ class TransactionSectionCenter extends StatelessWidget {
   final int axisCount;
   final int itemCount;
   final List<StaggeredTile> tileList = centerTile;
-  final TransactionDetailModel detail;
+  final DocumentSnapshot detail;
 
   TransactionSectionCenter(
       {Key? key,
@@ -21,14 +22,14 @@ class TransactionSectionCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> detailContent = [
-      Text(detail.productCode),
-      Text(detail.productName),
-      Text(detail.detailInfo),
-      Text(detail.size),
-      Text('${detail.amount}'),
-      Text('${detail.unitPrice}'),
-      Text('${detail.valueOfSupply}'),
-      Text('${detail.tax}'),
+      Text(detail['productCode']),
+      Text(detail['productName']),
+      Text(detail['detailInfo']),
+      Text(detail['size']),
+      Text('${detail['amount']}'),
+      Text('${detail['unitPrice']}'),
+      Text('${detail['valueOfSupply']}'),
+      Text('${detail['tax']}'),
     ];
 
     return StaggeredGridView.countBuilder(

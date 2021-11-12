@@ -41,21 +41,3 @@ class TransactionModel {
     balance = exBalance + totalPrice2;
   }
 }
-
-TransactionModel transactionModel = TransactionModel(
-  page: '1/1',
-  date: DateTime(2101, 9, 3),
-  counterpart: '준하우스',
-  totalPrice: '일금칠백칠십칠만원(7,770,000원)',
-  registrationNum: '876-86-00245',
-  company: '(주)네이첸',
-  providerName: '심현주',
-  officeAddress: '울산광역시 울주군 웅촌면 고연공단2길 130',
-  industry: '도소매',
-  product: '도어,몰딩',
-  telephone: '052-256-8907',
-  fax: '052-256-8906',
-  details: [detailModel, detailModel2],
-  exBalance: 10000000,
-  underwriter: '길은석',
-);
