@@ -45,18 +45,15 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildBuyerColumn(),
-                  const SizedBox(
-                    width: 60,
-                  ),
-                  buildVendorColumn(),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildBuyerColumn(),
+                const SizedBox(
+                  width: 60,
+                ),
+                buildVendorColumn(),
+              ],
             ),
             const SizedBox(
               height: 50,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:modu_test_with_staggered/model/service_model.dart';
 import 'package:modu_test_with_staggered/screens/components/header.dart';
 import 'package:modu_test_with_staggered/screens/service/components/service_line_chart.dart';
-import 'package:modu_test_with_staggered/screens/service/components/service_line_chart.dart';
 import 'package:modu_test_with_staggered/screens/service/components/service_pie_chart.dart';
 import 'package:modu_test_with_staggered/screens/service/components/service_table.dart';
 import 'package:modu_test_with_staggered/screens/service/components/service_table_staff.dart';

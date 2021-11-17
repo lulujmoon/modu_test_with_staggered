@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "753962737079",
+    "project_id": "modu-test",
+    "storage_bucket": "modu-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753962737079:android:d9b5f5752b27aaa66d9c32",
+        "android_client_info": {
+          "package_name": "com.example.modu_test_with_staggered"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753962737079-uaa0fh2h4bip5m8c0tspdmoqtd7luhd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSnRflkT56x9z_N4KPrrnPs1Lr9pyQ8cY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753962737079-uaa0fh2h4bip5m8c0tspdmoqtd7luhd7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
